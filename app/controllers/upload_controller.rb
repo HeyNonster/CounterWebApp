@@ -4,12 +4,13 @@ class UploadController < ApplicationController
   def index
     # CSV column headers
     # frame.number,frame.time,_ws.col.Source,_ws.col.Destination,_ws.col.Protocol
-    @process = ProcessCountFile.new('../USDA--main--2018-11-25--08-29-52.csv')
   end
 
   def results
     @file = Count.new()
     @file.count_file = params[:upload][:datafile]
+    @minute = params[:minute][:minute].to_i
     @process = ProcessCountFile.new(@file.count_file)
+    @results = @process.map_minutes(@minute)
   end
 end

@@ -1,5 +1,5 @@
-<h1>Results</h1>
+<h2>Results</h2>
 
-<% @test = @process.map_minutes(60) %>
-
-<%= line_chart @test, xtitle: "Time", ytitle: "Customer Count" %>
+<%= line_chart @results, xtitle: "Time", ytitle: "Customer Count" %>
+<br>
+<%= link_to 'Back', '/upload', class:'btn btn-danger'%>

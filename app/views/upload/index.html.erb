@@ -1,11 +1,15 @@
-<h1>Upload</h1>
+<h2>Upload</h2>
 <!-- CSV columns -->
 <!-- frame.number,frame.time,_ws.col.Source,_ws.col.Destination,_ws.col.Protocol -->
 <%= form_tag('/upload/results', :method => :get) do %>
     <p><label for="upload_file">Select File</label> : 
 
-        <%= file_field 'upload', 'datafile',  direct_upload: true %></p>
+    <%= file_field 'upload', 'datafile',  direct_upload: true %></p>
+    <p>
+        <label for="minute">Minute Filter:</label>
+    <%= number_field 'minute', 'minute'%>
+    </p>
 
-    <%= submit_tag "Upload" %>
+    <%= submit_tag "Upload", class:'btn btn-primary' %>
 <% end %>
 
