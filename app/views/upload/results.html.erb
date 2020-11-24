@@ -1,0 +1,5 @@
+<h1>Results</h1>
+
+<% @test = @process.map_minutes(60) %>
+
+<%= line_chart @test, xtitle: "Time", ytitle: "Customer Count" %>

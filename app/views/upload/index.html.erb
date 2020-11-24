@@ -1,0 +1,11 @@
+<h1>Upload</h1>
+<!-- CSV columns -->
+<!-- frame.number,frame.time,_ws.col.Source,_ws.col.Destination,_ws.col.Protocol -->
+<%= form_tag('/upload/results', :method => :get) do %>
+    <p><label for="upload_file">Select File</label> : 
+
+        <%= file_field 'upload', 'datafile',  direct_upload: true %></p>
+
+    <%= submit_tag "Upload" %>
+<% end %>
+
