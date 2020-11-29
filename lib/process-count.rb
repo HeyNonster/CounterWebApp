@@ -1,7 +1,7 @@
 class ProcessCountFile
   def initialize(file)
     @csv_text = file
-    @csv = CSV.parse(@csv_text.download, :headers => true)
+    @csv = CSV.read(@csv_text, :headers => true)
     @phones =  Hash.new { |hash, key| hash[key] = Array.new }
     @counts = Hash.new { |hash, key| hash[key] = 0 }
     @csv.each do |row|
@@ -27,6 +27,10 @@ class ProcessCountFile
       end
     end
     @matches
+  end
+
+  def unique_customers
+    @matches.length
   end
 
   def map_minutes(time)

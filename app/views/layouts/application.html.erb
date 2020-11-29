@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AutomatedCustomerCounter</title>
+    <title>Automated Counter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,27 @@
   </head>
 
   <body>
-      <div class="container pt-5">
-            <%= yield %>
-      </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="#">Automated Counter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <%= link_to "Markets", markets_path, class:'nav-link' %>
+            </li>
+            <li class="nav-item active">
+                <%= link_to "Upload", markets_path, class:'nav-link' %>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container table-responsive">
+        <%= yield %>
+    </div>
   </body>
 </html>

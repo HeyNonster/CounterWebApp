@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_052842) do
+ActiveRecord::Schema.define(version: 2020_11_29_193113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,5 +41,25 @@ ActiveRecord::Schema.define(version: 2020_11_24_052842) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "market_dates", force: :cascade do |t|
+    t.bigint "market_id", null: false
+    t.date "day"
+    t.integer "unique_customers"
+    t.jsonb "count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["market_id"], name: "index_market_dates_on_market_id"
+  end
+
+  create_table "markets", force: :cascade do |t|
+    t.string "name"
+    t.integer "kind"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "market_dates", "markets"
 end

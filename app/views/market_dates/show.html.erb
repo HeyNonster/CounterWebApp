@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<h2><%= link_to @market_date.market.name, @market_date.market %> | <%= @market_date.day.strftime('%b %d, %Y') %></h2>
+<hr/>
+<%= line_chart JSON(@market_date.count), xtitle: "Time", ytitle: "Customer Count", title: "Unique Customers: #{@market_date.unique_customers}" %>
+
+<%#= link_to 'Edit', edit_market_date_path(@market_date) %> |
+<%= link_to 'Back', market_dates_path %>

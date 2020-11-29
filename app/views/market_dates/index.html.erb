@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Market Dates</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Market</th>
+      <th>Day</th>
+      <th>Unique customers</th>
+      <th>Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @market_dates.each do |market_date| %>
+      <tr>
+        <td><%= market_date.market_id %></td>
+        <td><%= market_date.day %></td>
+        <td><%= market_date.unique_customers %></td>
+        <td><%= market_date.count %></td>
+        <td><%= link_to 'Show', market_market_date_path(market_date) %></td>
+        <td><%= link_to 'Edit', edit_market_date_path(market_date) %></td>
+        <td><%= link_to 'Destroy', '', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

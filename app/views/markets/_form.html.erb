@@ -1,0 +1,39 @@
+<div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+        <%= form_with(model: market, local: true) do |form| %>
+        <% if market.errors.any? %>
+            <div id="error_explanation">
+            <h2><%= pluralize(market.errors.count, "error") %> prohibited this market from being saved:</h2>
+
+            <ul>
+                <% market.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+            </div>
+        <% end %>
+        <div class="form-group text-center">
+            <h4><%= form.label :name %></h4>
+            <%= form.text_field :name, class:'form-control text-center' %>
+        </div>
+        <div class="form-group text-center">
+            <h4><%= form.label :kind %></h4>
+            <%= form.select :kind, options_for_select(@types), class:'form-control'  %>
+        </div>
+
+        <div class="form-group text-center">
+            <h4><%= form.label :start_time %></h4>
+            <%= form.time_select :start_time %>
+        </div>
+
+        <div class="form-group text-center">
+            <h4><%= form.label :end_time %></h4>
+            <%= form.time_select :end_time %>
+        </div>
+
+        <div class="actions text-center">
+            <%= form.submit 'Submit', class:'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+  </div>

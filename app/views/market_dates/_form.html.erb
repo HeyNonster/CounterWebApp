@@ -1,0 +1,27 @@
+<%= form_with(model: [ @market, market_date], local: true) do |form| %>
+  <% if market_date.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(market_date.errors.count, "error") %> prohibited this market_date from being saved:</h2>
+
+      <ul>
+        <% market_date.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :day %>
+    <%= form.date_select :day %>
+  </div>
+
+  <div class="form-group">
+    <%= form.file_field :count_file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class:'btn btn-primary' %>
+  </div>
+<% end %>
+<br/>

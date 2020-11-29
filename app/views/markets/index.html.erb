@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Markets</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @markets.each do |market| %>
+      <tr>
+        <td><%= market.name %></td>
+        <td><%= market.kind.titleize %></td>
+        <td><%= market.start_time.strftime('%-I:%M %P') %></td>
+        <td><%= market.end_time.strftime('%-I:%M %P') %></td>
+        <td><%= link_to 'Show', market, class:'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_market_path(market), class:'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Market', new_market_path, class:'btn btn-primary' %>
