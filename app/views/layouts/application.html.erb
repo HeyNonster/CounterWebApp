@@ -29,6 +29,16 @@
             </ul>
         </div>
     </nav>
+    <% if notice %>
+        <div class="alert notice alert-primary text-center notice-fade" role="alert">
+            <%= notice %>
+        </div>
+    <% end %>
+    <% if alert %>
+        <div class="alert alert-danger text-center notice-fade" role="alert">
+            <%= alert %>
+        </div>
+    <% end %>
     <div class="container table-responsive">
         <%= yield %>
     </div>
