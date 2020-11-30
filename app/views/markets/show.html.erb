@@ -28,6 +28,15 @@
                 <td><%= link_to 'Delete',market_market_date_path(@market, market_date), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
             </tr>
         <% end %>
+        <tr>
+            <td>
+                <strong>Total:</strong>
+            </td>
+            <td colspan="4">
+                <strong>
+                    <%= @total_customers %>
+                </strong>
+        </tr>
     </tbody>
 </table>
 

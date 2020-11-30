@@ -3,5 +3,6 @@
 <hr/>
 <%= line_chart JSON(@market_date.count), xtitle: "Time", ytitle: "Customer Count", title: "Unique Customers: #{@market_date.unique_customers}" %>
 
-<%#= link_to 'Edit', edit_market_date_path(@market_date) %> |
-<%= link_to 'Back', market_dates_path %>
+<%= link_to 'Edit', edit_market_market_date_path(@market, @market_date), class:'btn btn-warning' %>
+<br/><br/>
+<%= link_to 'Back', @market, class:'btn btn-danger' %>

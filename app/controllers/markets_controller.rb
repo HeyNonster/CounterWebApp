@@ -11,6 +11,7 @@ class MarketsController < ApplicationController
   # GET /markets/1.json
   def show
     @market_dates = MarketDate.where(market_id: @market.id)
+    @total_customers = @market_dates.sum(:unique_customers)
   end
 
   # GET /markets/new

@@ -1,3 +1,4 @@
+<br/>
 <%= form_with(model: [ @market, market_date], local: true) do |form| %>
   <% if market_date.errors.any? %>
     <div id="error_explanation">
@@ -12,7 +13,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :day %>
+    <%= form.label :day, 'Date' %>
     <%= form.date_select :day %>
   </div>
 

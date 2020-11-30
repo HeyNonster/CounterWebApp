@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :markets do
     resources :market_dates, only: [:show, :new, :edit, :create, :destroy]
   end
+  resources :data_reports, only: [:index]
   resources :market_dates, only: [:index]
   get 'upload/index'
   get 'welcome/index'

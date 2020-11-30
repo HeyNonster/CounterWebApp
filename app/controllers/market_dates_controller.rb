@@ -2,7 +2,7 @@ class MarketDatesController < ApplicationController
   require 'csv'
   require 'process-count'
   before_action :set_market_date, only: [:show, :edit, :update, :destroy]
-  before_action :set_market, only: [:new, :edit, :update, :create, :destroy]
+  before_action :set_market, only: [:new, :show, :edit, :update, :create, :destroy]
 
   # GET /market_dates
   # GET /market_dates.json

@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Markets</h2>
-
 <table class="table">
   <thead>
     <tr>
@@ -20,9 +19,9 @@
         <td><%= market.kind.titleize %></td>
         <td><%= market.start_time.strftime('%-I:%M %P') %></td>
         <td><%= market.end_time.strftime('%-I:%M %P') %></td>
-        <td><%= link_to 'Show', market, class:'btn btn-primary' %></td>
+        <td><%= link_to 'Enter', market, class:'btn btn-primary' %></td>
         <td><%= link_to 'Edit', edit_market_path(market), class:'btn btn-warning' %></td>
-        <td><%= link_to 'Destroy', market, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+        <td><%= link_to 'Delete', market, method: :delete, data: { confirm: 'Are you sure? Deleting this market will also delete all of the associated counts.' },class:'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,4 @@
 class Market < ApplicationRecord
   enum kind: [:urban, :suburban, :rural]
-  has_many :market_dates
+  has_many :market_dates, dependent: :destroy 
 end
