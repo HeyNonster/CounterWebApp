@@ -28,19 +28,23 @@ class MarketDatesController < ApplicationController
   # POST /market_dates.json
   def create
     @file = params[:market_date][:count_file]
-    @process = ProcessCountFile.new(@file.tempfile)
     @market_date = MarketDate.new(market_date_params)
     @market_date.market_id = @market.id
-    @market_date.count = @process.map_minutes(20).to_json
-    @market_date.unique_customers = @process.unique_customers
-    respond_to do |format|
-      if @market_date.save
-        format.html { redirect_to market_market_date_path(@market, @market_date), notice: 'Market date was successfully created.' }
-        format.json { render :show, status: :created, location: @market_date }
-      else
-        format.html { render :new }
-        format.json { render json: @market_date.errors, status: :unprocessable_entity }
+    if @market_date.valid?
+      @process = ProcessCountFile.new(@file.tempfile)
+      @market_date.count = @process.map_minutes(params[:market_date][:minute_filter].to_i).to_json
+      @market_date.unique_customers = @process.unique_customers
+      respond_to do |format|
+        if @market_date.save
+          format.html { redirect_to market_market_date_path(@market, @market_date), notice: 'Market date was successfully created.' }
+          format.json { render :show, status: :created, location: @market_date }
+        else
+          format.html { render :new }
+          format.json { render json: @market_date.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render :new
     end
   end
 
@@ -80,6 +84,6 @@ class MarketDatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def market_date_params
-      params.require(:market_date).permit(:market_id, :day)
+      params.require(:market_date).permit(:market_id, :day, :minute_filter)
     end
 end
